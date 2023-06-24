@@ -11,7 +11,7 @@ async function main() {
     const actors = controlledTokens.map(t => t.actor);
 
     //get modifiers for actors
-    const stats = Object.fromEntries(actors.map(actor => [actor.id, actor.attributes.perception.totalModifier]))
+    const stats = Object.fromEntries(actors.map(actor => [actor.id, actor.skills.stealth.check.mod]))
 
     //roll for scores
     const rollResults = await Promise.all(
@@ -39,7 +39,7 @@ async function main() {
             </tbody>
         </table>`;
 
-    let message = `<body><h1>Perception Roll</h1>${table}</body>`;
+    let message = `<body><h1>Stealth Roll</h1>${table}</body>`;
 
     //send to chat as gm whisper
     ChatMessage.create({ 
